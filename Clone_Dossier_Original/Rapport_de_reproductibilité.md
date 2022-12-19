@@ -143,13 +143,16 @@ After contacting the author, we obtained the following code files :
 
 .
 
-## II.3 New digramm for onnecting display items with inputs
+## II.3 New diagramm for onnecting display items with inputs
 
 After gathering raw data and cleaning codes missing files, we analysed analysis data and codes initially provided by the author and we propose a more detailed scheme of display items creation. 
 
 The new diagram looks like this :
 
 <img src="Diagramm_amélioré.PNG" width="460">
+
+NB : Demirci_CJE_2020.dta_0 and Demirci_CJE_2020.dta_1 files are only the initial and cleaned version of
+Demirci_CJE_2020.dta analysis data file.
 
 From this diagram we can clearly see the transformation of raw data into analysis data, and cleaning and analysis codes that have been used. Also we can distinguish the data files merge that produced the final analysis data used by the author for econometric estimations.   
 
