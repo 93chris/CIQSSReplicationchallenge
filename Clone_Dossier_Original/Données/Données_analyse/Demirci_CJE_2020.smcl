@@ -1,0 +1,194 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\chris\OneDrive\Bureau\GIT\CIQSSReplicationchallenge\Clone_Dossier_Original\Données\Données_analyse\Demirci_CJE_2020.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}22 May 2021, 00:40:33
+{txt}
+{com}. 
+. clear
+{txt}
+{com}. use Demirci_CJE_2020.dta  
+{txt}
+{com}. 
+. *
+. *** Generating control variables 
+.         *
+.         * Field of study dummies 
+.         tab field_codes,gen(f_)
+
+     {txt}(mean) {c |}
+field_codes {c |}
+          3 {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+       1103 {c |}{res}      6,691        1.03        1.03
+{txt}       1199 {c |}{res}      2,001        0.31        1.34
+{txt}       1401 {c |}{res}      4,746        0.73        2.07
+{txt}       1501 {c |}{res}      2,606        0.40        2.47
+{txt}       1901 {c |}{res}     20,005        3.07        5.54
+{txt}       2102 {c |}{res}     16,565        2.55        8.09
+{txt}       2399 {c |}{res}    120,621       18.54       26.63
+{txt}       2401 {c |}{res}      1,882        0.29       26.92
+{txt}       2405 {c |}{res}      4,346        0.67       27.58
+{txt}       2406 {c |}{res}      6,540        1.01       28.59
+{txt}       2408 {c |}{res}     17,924        2.75       31.34
+{txt}       2412 {c |}{res}      2,933        0.45       31.79
+{txt}       2414 {c |}{res}     11,095        1.71       33.50
+{txt}       2499 {c |}{res}     11,404        1.75       35.25
+{txt}       2599 {c |}{res}      5,232        0.80       36.06
+{txt}       2601 {c |}{res}      9,019        1.39       37.44
+{txt}       2901 {c |}{res}      5,355        0.82       38.27
+{txt}       3301 {c |}{res}     25,039        3.85       42.11
+{txt}       3401 {c |}{res}      7,445        1.14       43.26
+{txt}       3600 {c |}{res}     20,012        3.08       46.33
+{txt}       3699 {c |}{res}      9,739        1.50       47.83
+{txt}       3700 {c |}{res}     12,480        1.92       49.75
+{txt}       4101 {c |}{res}      5,514        0.85       50.60
+{txt}       4801 {c |}{res}     10,218        1.57       52.17
+{txt}       5000 {c |}{res}      3,750        0.58       52.74
+{txt}       5003 {c |}{res}      7,311        1.12       53.87
+{txt}       5007 {c |}{res}      4,581        0.70       54.57
+{txt}       5098 {c |}{res}      9,014        1.39       55.96
+{txt}       5200 {c |}{res}     40,701        6.26       62.21
+{txt}       5301 {c |}{res}      7,675        1.18       63.39
+{txt}       5401 {c |}{res}     11,820        1.82       65.21
+{txt}       5501 {c |}{res}     14,188        2.18       67.39
+{txt}       5506 {c |}{res}     16,764        2.58       69.97
+{txt}       5507 {c |}{res}     15,793        2.43       72.39
+{txt}       5599 {c |}{res}      4,950        0.76       73.15
+{txt}       6099 {c |}{res}     23,817        3.66       76.81
+{txt}       6107 {c |}{res}     17,847        2.74       79.56
+{txt}       6199 {c |}{res}     21,851        3.36       82.92
+{txt}       6200 {c |}{res}     17,800        2.74       85.65
+{txt}       6201 {c |}{res}     18,966        2.92       88.57
+{txt}       6203 {c |}{res}     29,015        4.46       93.03
+{txt}       6206 {c |}{res}      8,966        1.38       94.40
+{txt}       6207 {c |}{res}     11,277        1.73       96.14
+{txt}       6299 {c |}{res}      9,624        1.48       97.62
+{txt}       6402 {c |}{res}     15,504        2.38      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}    650,626      100.00
+{txt}
+{com}.         
+.         *
+.         *calendar year & academic year dummies
+.         capture drop cyear cy1
+{txt}
+{com}.         gen cyear=year  
+{txt}
+{com}.         forvalues y=9/12 {c -(}    
+{txt}  2{com}.          gen byte cy`y'=0
+{txt}  3{com}.          replace cy`y'=1 if `y'==cyear-2000   
+{txt}  4{com}.         {c )-}
+{txt}(160,870 real changes made)
+(163,054 real changes made)
+(160,358 real changes made)
+(166,344 real changes made)
+
+{com}.         
+.         *
+.         * Age-squared to control for potential experience  
+.         gen age_sqr=age*age
+{txt}
+{com}. 
+.         *
+.         * Gender
+.         gen byte female=0
+{txt}
+{com}.                 replace female=1 if sex==2
+{txt}(373,274 real changes made)
+
+{com}.         gen byte male=0
+{txt}
+{com}.                 replace male=1 if sex==1
+{txt}(277,352 real changes made)
+
+{com}. 
+.         *
+.         * Race/ethnicity ( Non-hispanic whites, Non-hispanic blacks, Non-hispanic asians, Hispanics, Non-hispanic others)
+.         gen byte white=0
+{txt}
+{com}.          replace white=1 if racesing==1 & hispan==0
+{txt}(505,492 real changes made)
+
+{com}.         gen byte black=0
+{txt}
+{com}.          replace black=1 if racesing==2 & hispan==0
+{txt}(44,138 real changes made)
+
+{com}.         gen byte asian=0
+{txt}
+{com}.          replace asian=1 if racesing==4 & hispan==0
+{txt}(61,234 real changes made)
+
+{com}.         gen byte hisp=0
+{txt}
+{com}.          replace hisp=1 if hispan==1
+{txt}(16,080 real changes made)
+
+{com}.         gen byte other=0
+{txt}
+{com}.          replace other=1 if (racesing==3 | racesing==5) & hispan==0     
+{txt}(3,356 real changes made)
+
+{com}.   
+.         *
+.         * For clustering for each level
+.         gen field_by_year=0
+{txt}
+{com}.          replace field_by_year=field_codes*10000+year
+{txt}(650,626 real changes made)
+
+{com}.    
+.         *
+.         * Citizenship
+.         gen byte ntv=0
+{txt}
+{com}.                 replace ntv=1 if citizen==0 | citizen==1 
+{txt}(554,032 real changes made)
+
+{com}.  
+.   
+. *** TABLE 1: Summary statistics for recent graduates
+. ***
+. ***  
+.    gen byte subgroup=0
+{txt}
+{com}.         replace subgroup=1 if eligible==1 & level==2 & age<=24 & school!=2 & ntv==1             // STEM, bachelor's
+{txt}(8,501 real changes made)
+
+{com}.         replace subgroup=2 if eligible==0 & level==2 & age<=24 & school!=2 & ntv==1             // Non-STEM, bachelor's
+{txt}(42,861 real changes made)
+
+{com}. 
+.         replace subgroup=3 if eligible==1 & level==3 & age<=28 & school!=2 & ntv==1             // STEM, master's
+{txt}(3,917 real changes made)
+
+{com}.         replace subgroup=4 if eligible==0 & level==3 & age<=28 & school!=2 & ntv==1             // Non-STEM, master's
+{txt}(17,930 real changes made)
+
+{com}. 
+.         replace subgroup=5 if eligible==1 & level==4 & age<=31 & school!=2 & ntv==1             // STEM, doctorates
+{txt}(1,887 real changes made)
+
+{com}.         replace subgroup=6 if eligible==0 & level==4 & age<=31 & school!=2 & ntv==1             // Non-STEM, doctorates
+{txt}(2,185 real changes made)
+
+{com}.   
+.   gen all=1
+{txt}
+{com}.   gen ryrwage_wagesample=.
+{txt}(650,626 missing values generated)
+
+{com}.    replace ryrwage_wagesample=ryrwage if wage_sample==1
+{txt}(547,544 real changes made)
+
+{com}.   table subgroup, c(N all) 
+{err}{p} option {bf:contents()} not allowed since Stata 17; see help {helpb table} for updated syntax{err}{p_end}
+{txt}{search r(198), local:r(198);}
+
+end of do-file
+
+{search r(198), local:r(198);}
+
+{com}. 
