@@ -162,7 +162,7 @@ From this diagram we can clearly see the transformation of raw data into analysi
 
 The confidential data that the author could not share with us are the raw SEVIS data that he obtained through a FOIA request. This student data can be obtained from U.S. Immigration and Customs Enforcement via a Freedom of Information Act (FOIA) request on their website.
 
-For more details on access to this confidential data, please see the  [Data Availability Statement](https://www.aeaweb.org/journals/data/data-code-policy#statement) by clicking [here](https://bitss.github.io/ACRE/sample-DAS.pdf). The adding of this document fulfils the [AEA](https://www.aeaweb.org/about-aea)'s requirements about data and code availability policy. 
+For more details on access to this confidential data, please see the  [Data Availability Statement](https://www.aeaweb.org/journals/data/data-code-policy#statement) by clicking [here](https://github.com/93chris/CIQSSReplicationchallenge/blob/v20221220/Clone_Dossier_Original/Data%20Availability%20Statement.pdf). The adding of this document fulfils the [AEA](https://www.aeaweb.org/about-aea)'s requirements about data and code availability policy. 
 
 By adding new files and providing detailed informations on access to confidential data, we have been able to improve display items reproducibility score. While initially all display items had a reproducibility score of 5; TABLE 3, TABLE 4 and Figure 2 have now achieved a score of 9/10. Figure 1 has reached the [ACRe maximum level](https://bitss.github.io/ACRE/assessment.html#score) as all necessary documents are available and produce the expected result.
 
@@ -170,7 +170,7 @@ By adding new files and providing detailed informations on access to confidentia
 
 ## II.5 Documenting the improvements using version control
 
-In order to facilitate the replicability of the results of the paper by future replicators, I used the GitHub version control software to document all the improvements I made to the original replication package provided by the author. These changes can be seen by visiting my [GitHub account](https://github.com/93chris/CIQSSReplicationchallenge). 
+In order to facilitate the replicability of the results of the paper by future replicators, I used the GitHub version control software to document all the improvements I made to the original replication package provided by the author. These changes can be seen by visiting my [GitHub account](https://github.com/93chris/CIQSSReplicationchallenge/tree/v20221220). 
 
 One of the changes I have made is to improve the original README file provided by the author. I have added more detailed and accurate informations on access to raw data opened to the public as well as confidential data. The final README will also include the new digram which better presents the combination of inputs to obtain the outputs displayed in the paper.
 
