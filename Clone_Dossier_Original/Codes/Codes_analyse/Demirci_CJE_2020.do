@@ -1,4 +1,4 @@
-cd "C:\Users\chris\OneDrive\Bureau\Replication CIQSS\MS2019112_Data"
+cd "C:\Users\chris\OneDrive\Bureau\GIT\CIQSSReplicationchallenge\Clone_Dossier_Original\Données\Données_analyse"
 *cd "C:\Users\Murat Demirci\Dropbox\OPT -- Labor Market\Results_CJE\Codes"	
 
 log using Demirci_CJE_2020
